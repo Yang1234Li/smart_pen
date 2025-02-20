@@ -1,0 +1,62 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.30.0.0
+Copyright (C) 2020 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: li liyang, li, LIC=3UURY-IJMBN-VJN6J-UGQN7-KXDR2-W0UL1
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.30.0.0
+Toolchain Path:  E:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         
+Dialog DLL:      
+Target DLL:      Segger\JL2CM3.dll V2.99.38.0
+Dialog DLL:      TCM.DLL V1.42.0.0
+ 
+<h2>Project:</h2>
+D:\0_proggram\YM_ble\Nordic\test4\nRF5_SDK_17.1.0_ddde560\examples\ble_peripheral\ble_app_hids_mouse\pca10056\s140\arm5_no_packs\ble_app_hids_mouse_pca10056_s140.uvprojx
+Project File Date:  01/09/2025
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'E:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'flash_s140_nrf52_7.2.0_softdevice'
+Before Build - User command #1: attrib +R ..\..\..\..\..\..\components\softdevice\s140\hex\\*
+compiling main.c...
+..\..\..\main.c(57): error:  #5: cannot open source input file "nordic_common.h": No such file or directory
+  #include "nordic_common.h"
+..\..\..\main.c: 0 warnings, 1 error
+"..\..\..\..\..\..\components\softdevice\s140\hex\s140_nrf52_7.2.0_softdevice.hex" - 1 Error(s), 0 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: NordicSemiconductor
+                http://developer.nordicsemi.com/nRF5_SDK/pieces/nRF_DeviceFamilyPack/NordicSemiconductor.nRF_DeviceFamilyPack.8.40.3.pack
+                NordicSemiconductor.nRF_DeviceFamilyPack.8.40.3
+                Nordic Semiconductor nRF ARM devices Device Family Pack with BSD license.
+   * Component: Startup Version: 8.40.3
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_flash_s140_nrf52_7.2.0_softdevice
+  E:\Users\liyang\AppData\Local\Arm\Packs\NordicSemiconductor\nRF_DeviceFamilyPack\8.40.3\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.4.0
+
+   * Component: NordicSemiconductor::Device:Startup:8.40.3
+      Source file:   Device\Source\arm\arm_startup_nrf52840.s
+      Source file:   Device\Source\system_nrf52.c
+      Include file:  Device\Include\system_nrf52840.h
+      Include file:  Device\Include\system_nrf.h
+Target not created.
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
