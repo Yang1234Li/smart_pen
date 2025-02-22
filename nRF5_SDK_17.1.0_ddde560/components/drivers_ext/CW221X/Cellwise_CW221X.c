@@ -128,7 +128,6 @@ int cw_read(unsigned char PointReg,unsigned char *pData)
 int cw_read_nbyte(unsigned char point_reg,unsigned char *r_pdata, unsigned char len)
 {
     ret_code_t err_code;
-    uint8_t reg_val;
 		
 		for(int i = 0; i < len; i++)
 		{
@@ -199,7 +198,6 @@ static int cw221x_get_state(void)
 	int ret;
 	unsigned char reg_val;
 	int i;
-	int reg_profile;
 	
 	ret = cw_read(REG_MODE_CONFIG, &reg_val);
 	if(ret)
@@ -217,7 +215,6 @@ static int cw221x_get_state(void)
 		ret = cw_read((REG_BAT_PROFILE + i), &reg_val);
 		if (ret)
 			return CW221X_ERROR_IIC;
-		reg_profile = REG_BAT_PROFILE + i;
 		if (config_profile_info[i] != reg_val)
 			break;
 	}
@@ -265,7 +262,7 @@ int cw221x_write_temperature(int temperature)
 	return 0;
 }
 
-int cw221x_sleep()
+int cw221x_sleep(void)
 {
 	int ret;
 	unsigned char reg_val = CONFIG_MODE_RESTART;
@@ -308,7 +305,6 @@ static int cw221x_config_start_ic()
 {
 	int ret;
 	unsigned char reg_val;
-	unsigned int voltage = 0;
 	int count = 0;
 
 	ret = cw221x_sleep();
@@ -382,7 +378,6 @@ int cw221x_get_vol(unsigned int *lp_vol)
 	int ret = 0;
 	unsigned int temp_val_buff = 0;
 	unsigned int ad_value = 0;
-	unsigned char reg_val = 0;
 
 	ret = cw221x_read_word(REG_VCELL_H, &temp_val_buff);
 	if(ret)
@@ -401,10 +396,8 @@ int cw221x_get_capacity(int *lp_uisoc)
 	unsigned int temp_val_buff = 0;
 	int soc = 0;
 	int soc_decimal = 0;
-	int remainder = 0;
+//	int remainder = 0;
 	unsigned int UI_SOC = 0;
-	unsigned char reg_val = 0;
-	int count = 0;
 
 	ret = cw221x_read_word(REG_SOC_INT, &temp_val_buff);
 	if(ret)
@@ -414,7 +407,7 @@ int cw221x_get_capacity(int *lp_uisoc)
 	soc_decimal = temp_val_buff & 0xFF;
 
  	UI_SOC = (((unsigned long)soc * 256 + soc_decimal) * 100)/ (UI_FULL * 256);
-	remainder = ((((unsigned long)soc * 256 + soc_decimal) * 100 * 100) / (UI_FULL * 256)) % 100;
+//	remainder = ((((unsigned long)soc * 256 + soc_decimal) * 100 * 100) / (UI_FULL * 256)) % 100;
 	
 	if(UI_SOC >= 100){
 		UI_SOC = 100;
@@ -463,7 +456,6 @@ int cw221x_get_current(long *lp_current)
 	int ret = 0;
 	unsigned int temp_val_buff = 0;
 	long cw_current = 0;
-	unsigned char reg_val = 0;
 	unsigned char fw_version = 0;
 	
 	ret = cw_read(REG_FW_VERSION, &fw_version);
@@ -527,16 +519,16 @@ int cw221x_dump_register(void)
 	int i = 0;
 
 	for(i = 0; i <= 0xF; i++){
-		cw_read(i, &reg_val);
+		ret = cw_read(i, &reg_val);
 		/*Please add print if use*/
 		/*printf("0x%2x = 0x%2x\n", i, (int)reg_val);*/
 	}
 	for(i = 0xA0; i <= 0xAB; i++){
-		cw_read(i, &reg_val);
+		ret = cw_read(i, &reg_val);
 		/*Please add print if use*/
 		/*printf("0x%2x = 0x%2x\n", i, (int)reg_val);*/
 	}
-	return 0;
+	return ret;
 }
 
 int cw221x_bat_init(void)

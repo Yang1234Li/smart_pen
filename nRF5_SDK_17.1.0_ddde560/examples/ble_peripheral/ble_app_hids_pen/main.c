@@ -87,6 +87,12 @@
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
 
+#include "pen_board.h"
+#include "haptic_nv.h"
+#include "Cellwise_CW221X.h"
+#include "cps4019.h"
+#include "tp_ts.h"
+#include <aw320xx.h>
 
 #define DEVICE_NAME                     "nRF5_Pen"                                /**< Name of device. Will be included in the advertising data. */
 #define MANUFACTURER_NAME               "NordicSemiconductor"                       /**< Manufacturer. Will be passed to Device Information Service. */
@@ -1285,6 +1291,17 @@ int main(void)
     conn_params_init();
     peer_manager_init();
 
+		pen_twi_init();
+		pen_spi_init();
+
+		pen_gsensor_init();
+		aw320xx_enter();
+		cw221x_bat_init();
+		haptic_nv_boot_init();
+		ctp_bl_ts_init();
+		cps_init();
+		//bl6133_hisr();
+	
     // Start execution.
     NRF_LOG_INFO("HID Mouse example started.");
     timers_start();

@@ -2,7 +2,7 @@
 #define _Cellwise_CW221X_Driver_h_
 
 int cw221x_get_chip_id(int *chip_id);
-int cw221x_sleep();
+int cw221x_sleep(void);
 int cw221x_get_vol(unsigned int *lp_vol);
 int cw221x_get_capacity(int *lp_uisoc);
 int cw221x_get_temp(int *lp_temp);

@@ -10,8 +10,8 @@
 #define CPS_INT_PIN NRF_GPIO_PIN_MAP(0, 12) // 中断引脚
 #define CPS_POLL_INTERVAL_MS 1000           // 轮询间隔
 #define CPS_FW_PAGE_SIZE 128                // 根据芯片实际情况修改
-#define CPS_BOOTLOADER_SIZE 2048
-#define CPS_FW_MAX_SIZE (64 * 1024)
+#define CPS_BOOTLOADER_SIZE 128
+#define CPS_FW_MAX_SIZE (64)
 #define CPS_PROGRAM_BUFFER_SIZE 64
 
 #define CPS_PROGRAM_TIMEOUT_MS 50
