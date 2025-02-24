@@ -1098,53 +1098,53 @@ static void scheduler_init(void)
  * @param[in]   x_delta   Horizontal movement.
  * @param[in]   y_delta   Vertical movement.
  */
-static void mouse_movement_send(int16_t x_delta, int16_t y_delta)
-{
-    ret_code_t err_code;
+//static void mouse_movement_send(int16_t x_delta, int16_t y_delta)
+//{
+//    ret_code_t err_code;
 
-    if (m_in_boot_mode)
-    {
-        x_delta = MIN(x_delta, 0x00ff);
-        y_delta = MIN(y_delta, 0x00ff);
+//    if (m_in_boot_mode)
+//    {
+//        x_delta = MIN(x_delta, 0x00ff);
+//        y_delta = MIN(y_delta, 0x00ff);
 
-        err_code = ble_hids_boot_mouse_inp_rep_send(&m_hids,
-                                                    0x00,
-                                                    (int8_t)x_delta,
-                                                    (int8_t)y_delta,
-                                                    0,
-                                                    NULL,
-                                                    m_conn_handle);
-    }
-    else
-    {
-        uint8_t buffer[INPUT_REP_MOVEMENT_LEN];
+//        err_code = ble_hids_boot_mouse_inp_rep_send(&m_hids,
+//                                                    0x00,
+//                                                    (int8_t)x_delta,
+//                                                    (int8_t)y_delta,
+//                                                    0,
+//                                                    NULL,
+//                                                    m_conn_handle);
+//    }
+//    else
+//    {
+//        uint8_t buffer[INPUT_REP_MOVEMENT_LEN];
 
-        APP_ERROR_CHECK_BOOL(INPUT_REP_MOVEMENT_LEN == 3);
+//        APP_ERROR_CHECK_BOOL(INPUT_REP_MOVEMENT_LEN == 3);
 
-        x_delta = MIN(x_delta, 0x0fff);
-        y_delta = MIN(y_delta, 0x0fff);
+//        x_delta = MIN(x_delta, 0x0fff);
+//        y_delta = MIN(y_delta, 0x0fff);
 
-        buffer[0] = x_delta & 0x00ff;
-        buffer[1] = ((y_delta & 0x000f) << 4) | ((x_delta & 0x0f00) >> 8);
-        buffer[2] = (y_delta & 0x0ff0) >> 4;
+//        buffer[0] = x_delta & 0x00ff;
+//        buffer[1] = ((y_delta & 0x000f) << 4) | ((x_delta & 0x0f00) >> 8);
+//        buffer[2] = (y_delta & 0x0ff0) >> 4;
 
-        err_code = ble_hids_inp_rep_send(&m_hids,
-                                         INPUT_REP_MOVEMENT_INDEX,
-                                         INPUT_REP_MOVEMENT_LEN,
-                                         buffer,
-                                         m_conn_handle);
-    }
+//        err_code = ble_hids_inp_rep_send(&m_hids,
+//                                         INPUT_REP_MOVEMENT_INDEX,
+//                                         INPUT_REP_MOVEMENT_LEN,
+//                                         buffer,
+//                                         m_conn_handle);
+//    }
 
-    if ((err_code != NRF_SUCCESS) &&
-        (err_code != NRF_ERROR_INVALID_STATE) &&
-        (err_code != NRF_ERROR_RESOURCES) &&
-        (err_code != NRF_ERROR_BUSY) &&
-        (err_code != BLE_ERROR_GATTS_SYS_ATTR_MISSING)
-       )
-    {
-        APP_ERROR_HANDLER(err_code);
-    }
-}
+//    if ((err_code != NRF_SUCCESS) &&
+//        (err_code != NRF_ERROR_INVALID_STATE) &&
+//        (err_code != NRF_ERROR_RESOURCES) &&
+//        (err_code != NRF_ERROR_BUSY) &&
+//        (err_code != BLE_ERROR_GATTS_SYS_ATTR_MISSING)
+//       )
+//    {
+//        APP_ERROR_HANDLER(err_code);
+//    }
+//}
 
 
 /**@brief Function for handling events from the BSP module.
@@ -1181,33 +1181,33 @@ static void bsp_event_handler(bsp_event_t event)
             }
             break;
 
-        case BSP_EVENT_KEY_0:
-            if (m_conn_handle != BLE_CONN_HANDLE_INVALID)
-            {
-                mouse_movement_send(-MOVEMENT_SPEED, 0);
-            }
-            break;
+//        case BSP_EVENT_KEY_0:
+//            if (m_conn_handle != BLE_CONN_HANDLE_INVALID)
+//            {
+//                mouse_movement_send(-MOVEMENT_SPEED, 0);
+//            }
+//            break;
 
-        case BSP_EVENT_KEY_1:
-            if (m_conn_handle != BLE_CONN_HANDLE_INVALID)
-            {
-                mouse_movement_send(0, -MOVEMENT_SPEED);
-            }
-            break;
+//        case BSP_EVENT_KEY_1:
+//            if (m_conn_handle != BLE_CONN_HANDLE_INVALID)
+//            {
+//                mouse_movement_send(0, -MOVEMENT_SPEED);
+//            }
+//            break;
 
-        case BSP_EVENT_KEY_2:
-            if (m_conn_handle != BLE_CONN_HANDLE_INVALID)
-            {
-                mouse_movement_send(MOVEMENT_SPEED, 0);
-            }
-            break;
+//        case BSP_EVENT_KEY_2:
+//            if (m_conn_handle != BLE_CONN_HANDLE_INVALID)
+//            {
+//                mouse_movement_send(MOVEMENT_SPEED, 0);
+//            }
+//            break;
 
-        case BSP_EVENT_KEY_3:
-            if (m_conn_handle != BLE_CONN_HANDLE_INVALID)
-            {
-                mouse_movement_send(0, MOVEMENT_SPEED);
-            }
-            break;
+//        case BSP_EVENT_KEY_3:
+//            if (m_conn_handle != BLE_CONN_HANDLE_INVALID)
+//            {
+//                mouse_movement_send(0, MOVEMENT_SPEED);
+//            }
+//            break;
 
         default:
             break;
@@ -1291,6 +1291,7 @@ int main(void)
     conn_params_init();
     peer_manager_init();
 
+		pen_gpio_init();
 		pen_twi_init();
 		pen_spi_init();
 
@@ -1300,7 +1301,6 @@ int main(void)
 		haptic_nv_boot_init();
 		ctp_bl_ts_init();
 		cps_init();
-		//bl6133_hisr();
 	
     // Start execution.
     NRF_LOG_INFO("HID Mouse example started.");

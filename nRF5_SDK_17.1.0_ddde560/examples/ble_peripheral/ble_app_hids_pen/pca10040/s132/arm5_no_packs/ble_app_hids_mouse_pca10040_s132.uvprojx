@@ -402,6 +402,11 @@
           <GroupName>BSP</GroupName>
           <Files>
             <File>
+              <FileName>pen_board.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\..\components\BSP\pen_board.h</FilePath>
+            </File>
+            <File>
               <FileName>SPI.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\..\components\BSP\SPI.c</FilePath>
@@ -410,6 +415,11 @@
               <FileName>I2C.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\..\components\BSP\I2C.c</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\components\BSP\GPIO.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -5095,6 +5105,11 @@
           <GroupName>BSP</GroupName>
           <Files>
             <File>
+              <FileName>pen_board.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\..\..\components\BSP\pen_board.h</FilePath>
+            </File>
+            <File>
               <FileName>SPI.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\..\components\BSP\SPI.c</FilePath>
@@ -5103,6 +5118,11 @@
               <FileName>I2C.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\..\components\BSP\I2C.c</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\components\BSP\GPIO.c</FilePath>
             </File>
           </Files>
         </Group>

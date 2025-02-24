@@ -3,7 +3,7 @@
 #define MCU_INT_4019A_PIN   				 	0
 #define MCU_INT_Charger_PIN   				1
 #define MCU_INT_CW2215_PIN   				 	2
-#define Tail_FS_OUT_PIN   				 		5
+#define Tail_FS_OUT_PIN   				 		5    //Smart pen end pressure acquisition value
 #define MCU_SCL0_PIN   				 				6
 #define MCU_SDA0_PIN   				 				7
 #define MCU_SCL2_PIN   				 				8
@@ -39,3 +39,4 @@ void gsensor_event_get(void);
 void pen_gsensor_init(void);
 
 void pen_twi_init (void);
+void pen_gpio_init(void);

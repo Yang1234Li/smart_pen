@@ -22,16 +22,23 @@ Dialog DLL:      TCM.DLL V1.42.0.0
  
 <h2>Project:</h2>
 D:\0_proggram\smart_pen\git\smart_pen\nRF5_SDK_17.1.0_ddde560\examples\ble_peripheral\ble_app_hids_pen\pca10040\s132\arm5_no_packs\ble_app_hids_mouse_pca10040_s132.uvprojx
-Project File Date:  02/22/2025
+Project File Date:  02/24/2025
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'E:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'nrf52832_xxaa'
+compiling GPIO.c...
+compiling I2C.c...
+compiling SPI.c...
 compiling main.c...
+..\..\..\main.c(181): warning:  #550-D: variable "m_in_boot_mode"  was set but never used
+  static bool              m_in_boot_mode = false;                                    /**< Current protocol mode. */
+..\..\..\main.c: 1 warning, 0 errors
+compiling lsm6dso_reg.c...
 linking...
-Program Size: Code=65176 RO-data=8276 RW-data=3200 ZI-data=21208  
+Program Size: Code=65228 RO-data=8336 RW-data=3200 ZI-data=21208  
 FromELF: creating hex file...
-".\_build\nrf52832_xxaa.axf" - 0 Error(s), 0 Warning(s).
+".\_build\nrf52832_xxaa.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 

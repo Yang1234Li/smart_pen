@@ -2,6 +2,7 @@
 ".\_build\main.o"
 ".\_build\spi.o"
 ".\_build\i2c.o"
+".\_build\gpio.o"
 ".\_build\bl_factory.o"
 ".\_build\fw_update.o"
 ".\_build\tp_ts.o"
